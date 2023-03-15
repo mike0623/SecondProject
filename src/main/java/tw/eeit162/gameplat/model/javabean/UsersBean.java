@@ -10,6 +10,8 @@ public class UsersBean implements Serializable {
 	private String userName;
 	private String gender;
 	private String birthday;
+	private String createDate;
+	private String userPhoto;
 	
 	
 	
@@ -19,6 +21,22 @@ public class UsersBean implements Serializable {
 	}
 	
 	
+	public UsersBean(int userID, String userAccount, String userPwd, String userName, String gender, String birthday,
+			String createDate, String userPhoto) {
+		this.userID = userID;
+		this.userAccount = userAccount;
+		this.userPwd = userPwd;
+		this.userName = userName;
+		this.gender = gender;
+		this.birthday = birthday;
+		this.createDate = createDate;
+		this.userPhoto = userPhoto;
+	}
+
+
+
+
+
 	public UsersBean(String userAccount, String userPwd, String userName, String gender, String birthday) {
 		this.userAccount = userAccount;
 		this.userPwd = userPwd;
@@ -35,6 +53,41 @@ public class UsersBean implements Serializable {
 		this.userName = userName;
 		this.gender = gender;
 		this.birthday = birthday;
+	}
+	
+	
+
+
+	public UsersBean(int userID, String userAccount, String userPwd, String userName, String gender, String birthday,
+			String userPhoto) {
+		this.userID = userID;
+		this.userAccount = userAccount;
+		this.userPwd = userPwd;
+		this.userName = userName;
+		this.gender = gender;
+		this.birthday = birthday;
+		this.userPhoto = userPhoto;
+	}
+
+
+	
+	public String getCreateDate() {
+		return createDate;
+	}
+
+
+	public void setCreateDate(String createDate) {
+		this.createDate = createDate;
+	}
+
+
+	public String getUserPhoto() {
+		return userPhoto;
+	}
+
+
+	public void setUserPhoto(String userPhoto) {
+		this.userPhoto = userPhoto;
 	}
 
 

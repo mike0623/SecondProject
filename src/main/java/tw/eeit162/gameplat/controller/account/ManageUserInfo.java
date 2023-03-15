@@ -39,19 +39,18 @@ public class ManageUserInfo extends HttpServlet {
 		try {
 			conn = ConnectionFactory.getConnection();
 			UsersDAO usersDAO = new UsersDAO(conn);
-			UsersBean myUser = usersDAO.selectUserByAccount((String)session.getAttribute("userAccount"),(String)session.getAttribute("userPwd"));
+			UsersBean myUser = usersDAO.selectUserByAccount((String)session.getAttribute("userAccount"));
 			
 			session.setAttribute("myUser", myUser);
-			request.getRequestDispatcher("ManageUserInfo.jsp").forward(request, response);
+//			request.getRequestDispatcher("ManageUserInfo.jsp").forward(request, response);
+			response.sendRedirect("ManageUserInfo.jsp");
 			conn.close();
 			
 			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} catch (ServletException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
+		}  catch (IOException e) {
 			e.printStackTrace();
 		}
 		

@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>註冊</title>
+    <link rel="stylesheet" href="SecondProject.css">
     <style>
 .form {
 	/* border: solid 1px black; */
@@ -25,6 +26,7 @@
     </style>
 </head>
 <body>
+<jsp:include page="/include/Header.jsp"></jsp:include>
     <form action="RegisterData.do" method="post" >
 		<fieldset class="form" >
             <legend>註冊</legend>
@@ -35,11 +37,11 @@
                 </tr>
                 <tr>
                     <td>*密碼:</td>
-                    <td><input id="registerPwd" type="password" name="registerPwd" placeholder="請輸入密碼:"></td>
+                    <td><input id="registerPwd" type="password" maxlength="16" minlength="4" name="registerPwd" placeholder="請輸入密碼:"></td>
                 </tr>
                 <tr>
                     <td>*請再次輸入密碼:</td>
-                    <td><input id="testPwd" type="password" name="testPwd" placeholder="請再次輸入密碼:"></td>
+                    <td><input id="testPwd" type="password" maxlength="16" minlength="4" name="testPwd" placeholder="請再次輸入密碼:"></td>
                 </tr>
                 <tr>
                     <td>*姓名:</td>
@@ -69,6 +71,7 @@
 			</table>
         </fieldset>
 	</form>
+    <jsp:include page="/include/Footer.jsp"></jsp:include>
     <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
     <script>
 

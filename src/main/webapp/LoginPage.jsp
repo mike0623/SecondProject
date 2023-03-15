@@ -4,6 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <title>登入</title>
+<link rel="stylesheet" href="${root}/SecondProject.css">
 <style>
 .form {
 	/* border: solid 1px black; */
@@ -22,7 +23,8 @@
 </style>
 </head>
 <body>
-	<form action="SignIn.do" method="post" >
+<jsp:include page="/include/Header.jsp"></jsp:include>
+	<form action="SignIn.do" method="post">
 		<fieldset class="form" >
             <legend>登入</legend>
             <table class="table">
@@ -43,10 +45,12 @@
 				<tr>
 					<td colspan="2">
 						<a href="Register.jsp">新用戶註冊</a>
+						<a href="SignOut.do">晚點再登入</a>
 					</td>
 				</tr>
 			</table>
         </fieldset>
 	</form>
+	<jsp:include page="/include/Footer.jsp"></jsp:include>
 </body>
 </html>

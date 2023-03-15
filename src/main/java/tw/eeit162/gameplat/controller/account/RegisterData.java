@@ -1,10 +1,13 @@
 package tw.eeit162.gameplat.controller.account;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Base64;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,6 +38,11 @@ public class RegisterData extends HttpServlet {
 			Connection conn = ConnectionFactory.getConnection();
 			UsersDAO usersDAO = new UsersDAO(conn);
 			boolean isExistedAccount = usersDAO.isExistedAccount(request.getParameter("registerAccount"));
+			String realPath = request.getServletContext().getRealPath("");
+			File file = new File(realPath+"WEB-INF/img/userPhotoForNull.jpg");
+			FileInputStream fis = new FileInputStream(file);
+			String userPhoto = "data:image/png;base64," + Base64.getEncoder().encodeToString(fis.readAllBytes());
+			fis.close();
 			if(isExistedAccount) {
 				request.setAttribute("accountRepeated", true);
 				request.getRequestDispatcher("Register.jsp").forward(request, response);
@@ -44,7 +52,7 @@ public class RegisterData extends HttpServlet {
 				request.getRequestDispatcher("Register.jsp").forward(request, response);
 			}
 			else {
-				usersDAO.insertNewUser(request.getParameter("registerAccount"),request.getParameter("registerPwd"),request.getParameter("userName"),request.getParameter("gender"),request.getParameter("birthday"));
+				usersDAO.insertNewUser(request.getParameter("registerAccount"),request.getParameter("registerPwd"),request.getParameter("userName"),request.getParameter("gender"),request.getParameter("birthday"), userPhoto);
 				response.getWriter().write("註冊成功!3秒後導入登入頁面");
 				response.setHeader("Refresh", "3;URL=LoginPage.jsp");
 			}

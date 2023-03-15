@@ -1,18 +1,23 @@
 package tw.eeit162.gameplat.controller.filter;
 
 import java.io.IOException;
+
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpFilter;
 
 @WebFilter("/UpdateUserInfo.do")
+@MultipartConfig
 public class TestUpdateUserFilter extends HttpFilter implements Filter {
-       
+	private static final long serialVersionUID = 1L;
+
+
 	public void init(FilterConfig fConfig) throws ServletException {
 	}
 
@@ -24,6 +29,7 @@ public class TestUpdateUserFilter extends HttpFilter implements Filter {
 		String userName = request.getParameter("userName");
 		String gender = request.getParameter("gender");
 		String birthday = request.getParameter("birthday");
+		String test = request.getParameter("test");
 		if("".equals(updatePwd) || "".equals(userName) || "".equals(gender) || "".equals(birthday)) {
 			request.setAttribute("columnIsNull", true);
 		}else {

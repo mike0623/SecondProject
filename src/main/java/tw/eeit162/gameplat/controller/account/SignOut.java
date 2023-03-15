@@ -22,8 +22,12 @@ public class SignOut extends HttpServlet {
 
 	private void processAction(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		HttpSession session = request.getSession();
-		session.removeAttribute("userAccount");
-		session.removeAttribute("userPwd");
+		if(session.getAttribute("userAccount") != null) {
+			session.removeAttribute("userAccount");			
+		}
+		if(session.getAttribute("userPwd") != null) {
+			session.removeAttribute("userPwd");			
+		}
 		session.setAttribute("isLogined", false);
 		
 		response.sendRedirect("Lobby.jsp");
