@@ -31,9 +31,9 @@ public class SignIn extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 //		PrintWriter out = response.getWriter();
 		if((boolean)request.getAttribute("isRegistered") == false) {
-			response.getWriter().write("請先註冊!5秒後導入註冊頁面!");
+			response.getWriter().write("請先註冊!3秒後導入註冊頁面!");
 //			out.close();
-			response.setHeader("Refresh", "5;URL=Register.jsp");
+			response.setHeader("Refresh", "3;URL=Register.jsp");
 		}else if((boolean)request.getAttribute("isRegistered") == true){
 			HttpSession session = request.getSession();
 			

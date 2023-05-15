@@ -41,6 +41,29 @@
 	<h3>您的分數為:${101 - forScore[forScore.size() -1][0] }</h3>
 	<a href="${root}/Lobby.jsp"><button>回到大廳</button></a>
 
+	<div class="rank">
+		<table>
+		<thead>
+			<tr>
+				<td>名次</td>
+				<td>玩家</td>
+				<td>分數</td>
+				<td>日期</td>
+			</tr>
+		</thead>
+			<tbody>
+				<c:forEach var="i" begin="0" end="${list.size()-1 }">
+					<tr>
+					<td>第${i+1 }名</td>
+					<td>${list[i].f_userID.userName }</td>
+					<td>${list[i].score }</td>
+					<td>${list[i].createdDate }</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
+
 
 
 	<jsp:include page="/include/Footer.jsp"></jsp:include>

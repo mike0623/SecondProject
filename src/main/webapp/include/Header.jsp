@@ -11,7 +11,7 @@
 				<li><a href="${root}/SignOut.do" >登出</a></li>
 			</ul>
 			</c:if>
-			<c:if test="${isLogined == false}">
+			<c:if test="${isLogined != true}">
 			<ul class="LoginButton">
 				<li><a href="${root}/Register.jsp" >註冊</a></li>
 				<li><a href="${root}/LoginPage.jsp" >登入</a></li>

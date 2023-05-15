@@ -32,7 +32,7 @@
             <legend>會員資料</legend>
             <table class="table">
 				<tr>
-                    <td>*帳號:</td>
+                    <td>帳號:</td>
                     <td>${userAccount}</td>
                 </tr>
                 <tr>

@@ -29,5 +29,20 @@ private Connection conn;
 	
 	}
 	
+	public void insertWhenUserDelete(UsersDeletedBean usersDeletedBean) throws SQLException {
+		String sqlstr = "insert into usersDeleted(userAccount,userPwd,userName,gender,birthday,userPhoto,deleter) values(?,?,?,?,?,?,'user')";
+		PreparedStatement psmt = conn.prepareStatement(sqlstr);
+		psmt.setString(1, usersDeletedBean.getUserAccount());
+		psmt.setString(2, usersDeletedBean.getUserPwd());
+		psmt.setString(3, usersDeletedBean.getUserName());
+		psmt.setString(4, usersDeletedBean.getGender());
+		psmt.setString(5, usersDeletedBean.getBirthday());
+		psmt.setString(6, usersDeletedBean.getUserPhoto());
+		psmt.executeUpdate();
+		
+		psmt.close();
+	
+	}
+	
 
 }

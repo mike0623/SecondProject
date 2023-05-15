@@ -7,68 +7,80 @@ public class ScoreBean implements Serializable {
 	
 	private int scoreID;
 	private int score;
-	private String createDate;
-	private int f_userID;
-	private int f_gameID;
+	private String createdDate;
+	private UsersBean f_userID;
+	private BoardgameBean f_gameID;
 	
 	
 	
-	public ScoreBean(int scoreID, int score, int f_userID, int f_gameID) {
+	public ScoreBean() {
+	}
+
+	public ScoreBean(int scoreID, int score, UsersBean f_userID, BoardgameBean f_gameID) {
 		this.scoreID = scoreID;
 		this.score = score;
 		this.f_userID = f_userID;
 		this.f_gameID = f_gameID;
 	}
 	
-	public ScoreBean(int score, int f_userID, int f_gameID) {
+	public ScoreBean(int score, UsersBean f_userID, BoardgameBean f_gameID) {
 		this.score = score;
 		this.f_userID = f_userID;
 		this.f_gameID = f_gameID;
 	}
 	
 
-	public ScoreBean(int scoreID, int score, String createDate, int f_userID, int f_gameID) {
+	public ScoreBean(int scoreID, int score, String createDate, UsersBean f_userID, BoardgameBean f_gameID) {
 		super();
 		this.scoreID = scoreID;
 		this.score = score;
-		this.createDate = createDate;
+		this.createdDate = createDate;
 		this.f_userID = f_userID;
 		this.f_gameID = f_gameID;
 	}
 
 	
-	public String getCreateDate() {
-		return createDate;
+	public String getCreatedDate() {
+		return createdDate;
 	}
 
-	public void setCreateDate(String createDate) {
-		this.createDate = createDate;
+	public void setCreatedDate(String createdDate) {
+		this.createdDate = createdDate;
 	}
 
-	public int getScoreID() {
-		return scoreID;
-	}
-	public void setScoreID(int scoreID) {
-		this.scoreID = scoreID;
-	}
+	
 	public int getScore() {
 		return score;
 	}
 	public void setScore(int score) {
 		this.score = score;
 	}
-	public int getF_userID() {
+
+	public int getScoreID() {
+		return scoreID;
+	}
+
+	public void setScoreID(int scoreID) {
+		this.scoreID = scoreID;
+	}
+
+	public UsersBean getF_userID() {
 		return f_userID;
 	}
-	public void setF_userID(int f_userID) {
+
+	public void setF_userID(UsersBean f_userID) {
 		this.f_userID = f_userID;
 	}
-	public int getF_gameID() {
+
+	public BoardgameBean getF_gameID() {
 		return f_gameID;
 	}
-	public void setF_gameID(int f_gameID) {
+
+	public void setF_gameID(BoardgameBean f_gameID) {
 		this.f_gameID = f_gameID;
 	}
+	
+	
 	
 
 }

@@ -14,6 +14,9 @@ import javax.servlet.http.HttpSession;
 
 import tw.eeit162.gameplat.controller.ConnectionFactory;
 import tw.eeit162.gameplat.model.dao.UsersDAO;
+import tw.eeit162.gameplat.model.dao.UsersDeletedDAO;
+import tw.eeit162.gameplat.model.javabean.UsersBean;
+import tw.eeit162.gameplat.model.javabean.UsersDeletedBean;
 
 /**
  * Servlet implementation class DeleteUser
@@ -37,6 +40,7 @@ public class DeleteUser extends HttpServlet {
 			e.printStackTrace();
 		}
 		HttpSession session = request.getSession();
+		String userAccount = (String)session.getAttribute("userAccount");
 		if(session.getAttribute("deleteUser") == null) {
 			session.setAttribute("deleteUser", true);
 			
@@ -46,10 +50,23 @@ public class DeleteUser extends HttpServlet {
 					response.sendRedirect("LoginPage.jsp");
 					Connection conn = ConnectionFactory.getConnection();
 					UsersDAO usersDAO = new UsersDAO(conn);
-					usersDAO.deleteUser((String)session.getAttribute("userAccount"));
+					//取得將刪除用戶資料後刪除
+					UsersBean user = usersDAO.selectUserByAccount(userAccount);
+					usersDAO.deleteUser(userAccount);
+					//
+					UsersDeletedDAO usersDeletedDAO = new UsersDeletedDAO(conn);
+					UsersDeletedBean usersDeletedBean = new UsersDeletedBean();
+					usersDeletedBean.setUserAccount(userAccount);
+					usersDeletedBean.setUserPwd(user.getUserPwd());
+					usersDeletedBean.setUserName(user.getUserName());
+					usersDeletedBean.setGender(user.getGender());
+					usersDeletedBean.setBirthday(user.getBirthday());
+					usersDeletedBean.setUserPhoto(user.getUserPhoto());
+					usersDeletedDAO.insertWhenUserDelete(usersDeletedBean);
+					
 					conn.close();
 					session.removeAttribute("deleteUser");
-					if(session.getAttribute("userAccount") != null) {
+					if(userAccount != null) {
 						session.removeAttribute("userAccount");			
 					}
 					if(session.getAttribute("userPwd") != null) {
